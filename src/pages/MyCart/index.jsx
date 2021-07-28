@@ -1,10 +1,27 @@
-import { useHistory } from "react-router-dom";
+import { Container, Items, Bill, Title } from "./styles";
+import { useSelector } from "react-redux";
+import { ProductCard } from "../../components/ProductCard";
 
 export const MyCart = () => {
-  const history = useHistory();
+  const cart = useSelector((state) => state.cart);
   return (
     <>
-      <h1>My Cart</h1>
+      <Title>My Cart</Title>
+      <Container>
+        <Items>
+          {cart.map((product) => (
+            <ProductCard key={product.id} product={product} isRemovable />
+          ))}
+        </Items>
+        <Bill>
+          <span>
+            TOTAL: $
+            {cart.reduce((acc, cur) => {
+              return cur.price + acc;
+            }, 0)}
+          </span>
+        </Bill>
+      </Container>
     </>
   );
 };

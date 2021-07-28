@@ -9,8 +9,8 @@ export const MyHeader = styled.div`
   font-size: 1.15rem;
 
   img {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
   }
 
   ul {
